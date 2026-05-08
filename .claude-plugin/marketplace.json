@@ -10,7 +10,7 @@
       "name": "marketing-planner-v1",
       "source": "./plugins/marketing-planner",
       "description": "Guided 5-phase marketing planning plugin for SMBs (v1).",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "tags": ["marketing", "planning", "seo", "growth"]
     }
   ]
