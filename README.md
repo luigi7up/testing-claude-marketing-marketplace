@@ -11,7 +11,7 @@ This repository is organized as an internal marketplace for company plugins.
 
 ## Included Plugins
 
-- `marketing-planner` - guided marketing planning workflow for SMB customers
+- `marketing-planner-v1` - Guided 5-phase marketing planning plugin for SMBs (v1)
 
 ## How To Add A New Plugin
 

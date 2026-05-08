@@ -6,12 +6,12 @@
   },
   "plugins": [
     {
-      "id": "marketing-planner",
-      "name": "Marketing Planner",
-      "version": "1.0.0",
+      "id": "marketing-planner-v1",
+      "name": "Marketing Planner v1",
+      "version": "0.1.0",
       "status": "active",
       "path": "plugins/marketing-planner",
-      "description": "Runs a structured 5-phase marketing planning workflow for SMB customers.",
+      "description": "Guided 5-phase marketing planning plugin for SMBs (v1).",
       "owner": "internal",
       "tags": ["marketing", "planning", "seo", "growth"]
     }

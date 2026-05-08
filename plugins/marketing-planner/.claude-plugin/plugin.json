@@ -1,5 +1,5 @@
 {
-  "name": "marketing-planner",
-  "description": "Internal market-planning plugin that helps employees gather requirements, understand client businesses, and build clear action plans.",
+  "name": "marketing-planner-v1",
+  "description": "Guided 5-phase marketing planning plugin for SMBs (v1).",
   "version": "0.1.0"
 }
