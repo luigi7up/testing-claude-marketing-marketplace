@@ -5,7 +5,9 @@ This repository is organized as an internal marketplace for company plugins.
 ## Structure
 
 - `catalog/plugins.json` - plugin catalog used to list and discover all plugins
-- `plugins/<plugin-id>/` - each plugin package (skill, docs, metadata)
+- `plugins/<plugin-id>/.claude-plugin/plugin.json` - plugin manifest
+- `plugins/<plugin-id>/skills/<skill-name>/SKILL.md` - plugin skills
+- `plugins/<plugin-id>/references/` - plugin reference docs
 
 ## Included Plugins
 

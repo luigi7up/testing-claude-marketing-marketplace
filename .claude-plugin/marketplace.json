@@ -1,19 +1,17 @@
 {
-  "schema_version": "1.0",
-  "marketplace": {
-    "id": "github-cloud-marketplace-internal",
-    "name": "GitHub Cloud Marketplace",
-    "visibility": "internal",
-    "description": "Internal marketplace catalog for company Claude plugins."
+  "$schema": "https://claudelint.com/api/schemas/marketplace",
+  "name": "github-cloud-marketplace",
+  "description": "Internal marketplace catalog for company Claude plugins.",
+  "owner": {
+    "name": "luigi7up"
   },
   "plugins": [
     {
-      "id": "marketing-planner",
-      "name": "Marketing Planner",
+      "name": "marketing-planner",
+      "source": "./plugins/marketing-planner",
+      "description": "Guided 5-phase marketing planning plugin for SMBs.",
       "version": "1.0.0",
-      "path": "plugins/marketing-planner",
-      "entrypoint": "SKILL.md",
-      "description": "Guided 5-phase marketing planning plugin for SMBs."
+      "tags": ["marketing", "planning", "seo", "growth"]
     }
   ]
 }
