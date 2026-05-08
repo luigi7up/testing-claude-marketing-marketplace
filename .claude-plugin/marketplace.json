@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "marketplace": {
+    "id": "github-cloud-marketplace-internal",
+    "name": "GitHub Cloud Marketplace",
+    "visibility": "internal",
+    "description": "Internal marketplace catalog for company Claude plugins."
+  },
+  "plugins": [
+    {
+      "id": "marketing-planner",
+      "name": "Marketing Planner",
+      "version": "1.0.0",
+      "path": "plugins/marketing-planner",
+      "entrypoint": "SKILL.md",
+      "description": "Guided 5-phase marketing planning plugin for SMBs."
+    }
+  ]
+}
