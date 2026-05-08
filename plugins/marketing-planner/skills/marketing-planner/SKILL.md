@@ -71,7 +71,7 @@ Work through these phases in order:
 4. Strategy design (3/6/12 months, channels, budget)
 5. Final strategy delivery
 
-Read all files in `references/` before starting phase 1.
+Read all files in `../references/` before starting phase 1.
 
 ### Phase 1 - Business and website discovery
 
