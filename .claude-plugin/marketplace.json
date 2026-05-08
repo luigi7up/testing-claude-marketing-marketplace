@@ -1,7 +1,7 @@
 {
   "$schema": "https://claudelint.com/api/schemas/marketplace",
-  "name": "github-cloud-marketplace",
-  "description": "Internal marketplace catalog for company Claude plugins.",
+  "name": "claude-smb-marketplace",
+  "description": "Claude marketplace for SMB workflows.",
   "owner": {
     "name": "luigi7up"
   },
@@ -10,7 +10,7 @@
       "name": "marketing-planner-v1",
       "source": "./plugins/marketing-planner",
       "description": "Guided 5-phase marketing planning plugin for SMBs (v1).",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "tags": ["marketing", "planning", "seo", "growth"]
     }
   ]
