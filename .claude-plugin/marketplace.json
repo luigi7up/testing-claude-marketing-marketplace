@@ -9,8 +9,8 @@
     {
       "name": "marketing-planner",
       "source": "./plugins/marketing-planner",
-      "description": "Guided 5-phase marketing planning plugin for SMBs.",
-      "version": "1.0.0",
+      "description": "Internal market-planning plugin for employees to gather client requirements and understand the client's business before planning.",
+      "version": "0.1.0",
       "tags": ["marketing", "planning", "seo", "growth"]
     }
   ]
