@@ -1,0 +1,19 @@
+{
+  "marketplace": {
+    "name": "GitHub Cloud Marketplace",
+    "visibility": "internal",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "id": "marketing-planner",
+      "name": "Marketing Planner",
+      "version": "1.0.0",
+      "status": "active",
+      "path": "plugins/marketing-planner",
+      "description": "Runs a structured 5-phase marketing planning workflow for SMB customers.",
+      "owner": "internal",
+      "tags": ["marketing", "planning", "seo", "growth"]
+    }
+  ]
+}
