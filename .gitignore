@@ -1,0 +1,5 @@
+# Client data — contains per-customer memory and campaign results
+plugins/aida/clients/
+
+# macOS
+.DS_Store

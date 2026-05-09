@@ -1,66 +1,104 @@
 # Claude SMB Marketplace
 
-This repository is to be used as a Claude Cowork marketplace to enable plugins and skills that automate key SMB workflows
+This repository is a Claude Code marketplace containing plugins and skills that automate key SMB workflows.
+
+## Aida — AI Business Agent
+
+Aida is an AI business agent and the entry point for the agentic business platform. She acts as a trusted business partner for SMB customers, helping them succeed online through autonomous discovery, strategy, and simulated campaign execution.
+
+**Multi-agent pipeline:**
+
+| Agent | Skill | Role |
+|---|---|---|
+| Aida (orchestrator) | `aida` | Client intake, briefing, strategy synthesis |
+| Site Agent | `site-agent` | Scrapes and analyzes the client's website |
+| Competitor Agent | `competitor-agent` | Identifies and researches competitors |
+| Social Media Agent | `social-media-agent` | Drafts example social posts (simulation) |
+| Paid Agent | `paid-agent` | Drafts example Google Ads (simulation) |
+| Listings Agent | `listings-agent` | Proposes Google Business Profile updates (simulation) |
+| Campaign Simulator | `campaign-simulator` | Generates realistic campaign results after execution |
+
+**Client data structure:**
+
+```
+plugins/aida/clients/
+└── [url-slug]/
+    ├── meta.md                  ← business name, URL, dates
+    ├── memory/
+    │   ├── business_profile.md  ← written by site-agent
+    │   └── competitors.md       ← written by competitor-agent
+    ├── campaign-results/
+    │   ├── gbp-listing.md       ← written by campaign-simulator
+    │   ├── social-media.md
+    │   └── google-ads.md
+    └── Marketing_Strategy.md    ← final deliverable
+```
+
+Each client is isolated by URL slug (e.g. `https://www.example.com` → `example-com`). Aida presents a client picker on startup when multiple clients exist.
+
+---
 
 ## Local development
 
-If you're contributing or want to test changes without pushing to the GitHub repository, install it in CLaude from your local clone.
+If you're contributing or want to test changes without pushing to GitHub, install from your local clone.
 
 ### Prerequisites
 
-- [Claude Code CLI](https://docs.claude.com/en/docs/claude-code)
-- Verify with `claude --version`
+- [Claude Code CLI](https://docs.claude.com/en/docs/claude-code) — verify with `claude --version`
 - Git
 
 ### Setup
 
-Clone this repo
-
-Open a terminal, navigate to the repo folder and start a Claude Code session:
+Clone this repo, then open a Claude Code session in the repo folder:
 
 ```bash
 cd <path to this local repo>
 claude
 ```
 
-Register your local clone as a marketplace and install the plugin from it:
+Register your local clone as a marketplace and install Aida:
 
 ```
 /plugin marketplace add ./.
-/plugin install marketing-planner-v1@claude-smb-marketplace
+/plugin install aida@claude-smb-marketplace
 /reload-plugins
 ```
 
-### Run the plugin
+### Run Aida
 
-1. Invoke the plugin to test 
-    ```
-    /marketing-planner-v1:claude-smb-marketplace
-    ```
-2. After making local changes, reload:
-   ```
-   /reload-plugins
-   ```
+```
+/aida:aida
+```
 
+After making local changes to any skill, reload:
 
-For changes to a skill's `description:` frontmatter (which controls auto-triggering), restart the session entirely — descriptions are evaluated at session start.
+```
+/reload-plugins
+```
 
-## Structure
+---
 
-- `catalog/plugins.json` - plugin catalog used to list and discover all plugins
-- `plugins/<plugin-id>/.claude-plugin/plugin.json` - plugin manifest
-- `plugins/<plugin-id>/skills/<skill-name>/SKILL.md` - plugin skills
-- `plugins/<plugin-id>/references/` - plugin reference docs
+## Repository structure
 
-## Included Plugins
+```
+.claude-plugin/
+└── marketplace.json             ← marketplace manifest
 
-- `marketing-planner-v1` - Guided 5-phase marketing planning plugin for SMBs (v1)
+plugins/
+└── aida/
+    ├── .claude-plugin/
+    │   └── plugin.json          ← plugin manifest
+    ├── skills/
+    │   ├── aida/                ← orchestrator
+    │   ├── site-agent/
+    │   ├── competitor-agent/
+    │   ├── social-media-agent/
+    │   ├── paid-agent/
+    │   ├── listings-agent/
+    │   └── campaign-simulator/
+    ├── references/              ← guides and templates used by agents
+    └── clients/                 ← per-client memory and campaign data
 
-## How To Add A New Plugin
-
-1. Create a new folder under `plugins/` using a unique plugin id.
-2. Add a `plugin.json` file with metadata.
-3. Add implementation assets (for example `SKILL.md`, prompts, references).
-4. Add the plugin entry to `catalog/plugins.json`.
-
-This keeps the marketplace consistent and makes plugins easy to discover and maintain.
+catalog/
+└── plugins.json                 ← plugin catalog for discovery
+```
