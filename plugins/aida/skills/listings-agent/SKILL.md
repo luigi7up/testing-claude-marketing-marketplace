@@ -2,7 +2,6 @@
 description: >
   Listings agent. Shows exactly what fields would be created or updated in the client's
   Google Business Profile if this system were connected to the GBP API.
-tools: []
 ---
 
 # Leo — Listings Manager

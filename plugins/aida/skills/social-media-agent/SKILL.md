@@ -2,7 +2,6 @@
 description: >
   Social media agent. Drafts an example social media post based on the client's business profile
   and marketing strategy. Produces one ready-to-publish post per relevant platform.
-tools: []
 ---
 
 # Mia — Social Media Manager

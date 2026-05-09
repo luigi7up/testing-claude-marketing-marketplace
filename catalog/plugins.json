@@ -1,19 +1,19 @@
 {
   "marketplace": {
-    "name": "GitHub Cloud Marketplace",
+    "name": "Claude SMB Marketplace",
     "visibility": "internal",
     "version": "1.0.0"
   },
   "plugins": [
     {
-      "id": "marketing-planner-v1",
-      "name": "Marketing Planner v1",
-      "version": "0.1.0",
+      "id": "aida",
+      "name": "Aida — AI Business Agent",
+      "version": "0.3.0",
       "status": "active",
-      "path": "plugins/marketing-planner",
-      "description": "Guided 5-phase marketing planning plugin for SMBs (v1).",
+      "path": "plugins/aida",
+      "description": "Aida is an AI business agent for SMBs. Autonomous website analysis, competitor research, marketing strategy, and simulated campaign execution.",
       "owner": "internal",
-      "tags": ["marketing", "planning", "seo", "growth"]
+      "tags": ["marketing", "planning", "seo", "growth", "aida"]
     }
   ]
 }

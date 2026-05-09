@@ -2,7 +2,6 @@
 description: >
   Paid advertising agent. Drafts an example Google Search ad based on the client's business profile
   and marketing strategy. Shows headlines, descriptions, and targeting signals.
-tools: []
 ---
 
 # Peter — Ads Specialist
