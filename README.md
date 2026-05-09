@@ -26,12 +26,12 @@ plugins/aida/clients/
     ├── meta.md                  ← business name, URL, dates
     ├── memory/
     │   ├── business_profile.md  ← written by site-agent
-    │   └── competitors.md       ← written by competitor-agent
-    ├── campaign-results/
-    │   ├── gbp-listing.md       ← written by campaign-simulator
-    │   ├── social-media.md
-    │   └── google-ads.md
-    └── Marketing_Strategy.md    ← final deliverable
+    │   ├── competitors.md       ← written by competitor-agent
+    │   └── marketing_strategy.md ← final deliverable
+    └── campaign-results/
+        ├── gbp-listing.md       ← written by campaign-simulator
+        ├── social-media.md
+        └── google-ads.md
 ```
 
 Each client is isolated by URL slug (e.g. `https://www.example.com` → `example-com`). Aida presents a client picker on startup when multiple clients exist.
