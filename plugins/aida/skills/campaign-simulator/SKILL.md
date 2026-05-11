@@ -29,7 +29,7 @@ These templates define the data schema that will eventually be populated from re
 
 You will receive:
 - The contents of the client's `business_profile.md` (business context, industry, services, geography, strategy direction)
-- The client path prefix (e.g. `plugins/aida/clients/example-com/`) — all files must be written under this prefix
+- The results path for this campaign version (e.g. `plugins/aida/clients/example-com/campaigns/v1/results/`) — write all three result files here
 - A brief summary of what was executed (which channels were activated, what content was drafted/proposed)
 
 ## How to generate realistic results
@@ -44,11 +44,11 @@ Follow the "Simulator instructions" section of each data template. General rules
 
 ## Output — write three files
 
-Write all three files to `[client-path-prefix]campaign-results/`. Overwrite any existing content. Format each file as readable markdown — not raw YAML — but ensure all fields from the data schema are represented.
+Write all three files to the provided `[results-path]`. Overwrite any existing content. Format each file as readable markdown — not raw YAML — but ensure all fields from the data schema are represented.
 
 ---
 
-### [client-path-prefix]campaign-results/gbp-listing.md
+### [results-path]gbp-listing.md
 
 ```
 # Google Business Profile Results
@@ -80,7 +80,7 @@ _Last updated: [today's date] — Simulation data_
 
 ---
 
-### [client-path-prefix]campaign-results/social-media.md
+### [results-path]social-media.md
 
 ```
 # Social Media Results
@@ -111,7 +111,7 @@ _Last updated: [today's date] — Simulation data_
 
 ---
 
-### [client-path-prefix]campaign-results/google-ads.md
+### [results-path]google-ads.md
 
 ```
 # Google Ads Results
@@ -145,7 +145,7 @@ _Last updated: [today's date] — Simulation data_
 ---
 
 After writing all three files, report back to the orchestrator:
-> "Campaign results written to [client-path-prefix]campaign-results/. Aida can now brief the customer on performance."
+> "Campaign results written to [results-path]. Aida can now brief the customer on performance."
 
 ## Output prefix
 
