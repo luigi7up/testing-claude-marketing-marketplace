@@ -63,7 +63,26 @@ Be factual — only report what you actually observe on the site. For any field 
 
 Save the business profile to the target file path provided. Use the structure from `plugins/aida/references/business-profile-template.md` and merge your findings into its sections.
 
-Report back to the orchestrator that the analysis is complete and the file has been written.
+Then report back to the orchestrator with a **concise briefing** in exactly this format:
+
+```
+Business: [One sentence — business name, type, location, who they serve, and what they sell.]
+
+Strengths: [One sentence listing the most notable differentiators, facilities, or offerings found on the site.]
+
+Key gaps:
+1. [Gap — one line, specific and actionable]
+2. [Gap]
+3. [Gap]
+4. [Gap]
+5. [Gap]
+```
+
+Rules for the briefing:
+- Business line: include name, business type, location (city + region if local), audience (men/women/kids, B2B/B2C, etc.), and top 3–5 specific services or products
+- Strengths: only what you actually observed — brand names, equipment, unique features, parking, certifications, etc. Do not invent.
+- Key gaps: 4–6 items, each starting with the missing element and a one-line consequence (e.g. "No online booking — phone-only loses customers outside opening hours"). Prioritise by marketing impact.
+- Keep the entire briefing under 10 lines.
 
 ## Output prefix
 

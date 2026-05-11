@@ -20,7 +20,7 @@ The plan must be tangible and action-oriented. Lead with what happens this week,
 
 The first things Aida's team will do, starting now. Be specific: what gets done, who does it (name the agent), and what the customer will see as a result.
 
-- **Day 1–2:** [action] — [Sam/Clara/Mia/Peter/Leo] will [do X], and you'll see [result]
+- **Day 1–2:** [action] — [Sam/Clara/Mia/Peter/Leo/Emma] will [do X], and you'll see [result]
 - **Day 3–4:** [action] — [agent] will [do X], and you'll see [result]
 - **Day 5–7:** [action] — [agent] will [do X], and you'll see [result]
 

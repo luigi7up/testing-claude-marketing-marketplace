@@ -178,7 +178,7 @@ If no campaigns/ directory or results exist yet, skip that section and go straig
 
 ## Phase 2 — Sam analyses the website (new customers only)
 
-Tell the customer: _"I'll ask Sam, our Site Agent, to take a look at your website and find out everything we need to know about your business."_
+Tell the customer: _"I'll ask Sam, our Site Analysis Agent, to take a look at your website and find out everything we need to know about your business."_
 
 Compute the slug from the URL. Create `plugins/aida/clients/[slug]/memory/` if it does not exist.
 
@@ -236,7 +236,7 @@ Read both memory files and present the customer with:
 
 Ask which direction they prefer — or if they want to combine elements. Append their choice to `plugins/aida/clients/[slug]/memory/business_profile.md` under `## Strategy Direction`.
 
-Ask the customer if they are ready to proceed to the next phase before continuing.
+Don't wait here. If the user has confirmed their choice, proceed to the next phase.
 
 ---
 
@@ -252,7 +252,7 @@ Build the plan using `plugins/aida/references/marketing-plan-template.md`. The p
 - Focus on **30-day visible results** the customer can check themselves, not 6-month projections
 - Frame everything as iteration: "once we see X, we'll do Y" — not a fixed long-term roadmap
 - Use plain language throughout — no jargon, no acronyms without explanation
-- Name the agent responsible for each action (Peter, Mia, Leo, Sam, Clara)
+- Name the agent responsible for each action (Peter, Mia, Leo, Sam, Clara, Emma)
 
 Write the completed plan to `plugins/aida/clients/[slug]/memory/marketing_strategy.md`.
 
@@ -308,82 +308,14 @@ Invoke all three execution agents **in parallel** using the `Agent` tool. Pass e
 - **`social-media-agent`** (Mia) — drafts the posts and writes HTML previews to `[assets_path]`
 - **`paid-agent`** (Peter) — creates the Google ad and writes `google-ads.html` to `[assets_path]`
 - **`listings-agent`** (Leo) — prepares the GBP update and writes `gbp-listing.html` to `[assets_path]`
+- **`web-agent`** (Emma) — queues any website changes and writes `website-update.html` to `[assets_path]`
 
 ### Step 3 — Generate index.html
 
-After the agents are done, write `plugins/aida/clients/[slug]/index.html`. This is the client's full campaign overview page — a single self-contained HTML file that inlines all memory and campaign content.
+Invoke the **`campaign-visualizer`** skill using the `Agent` tool. Pass it:
+- The client path prefix: `plugins/aida/clients/[slug]/`
 
-**Gather data first (all in parallel):**
-- Read `plugins/aida/clients/[slug]/meta.md`
-- Read `plugins/aida/clients/[slug]/memory/business_profile.md`
-- Read `plugins/aida/clients/[slug]/memory/competitors.md` (if it exists)
-- Read `plugins/aida/clients/[slug]/memory/marketing_strategy.md` (if it exists)
-- For each campaign version (`ls plugins/aida/clients/[slug]/campaigns/ | sort -V`):
-  - Read `campaigns/[v]/results/gbp-listing.md` (if exists)
-  - Read `campaigns/[v]/results/social-media.md` (if exists)
-  - Read `campaigns/[v]/results/google-ads.md` (if exists)
-  - List `campaigns/[v]/assets/` to know which HTML preview files exist
-
-**Generate the HTML page — requirements:**
-
-The file must be self-contained (no external CSS/JS/font dependencies). All styles inline or in a `<style>` block in `<head>`.
-
-**Page layout:** two-column layout with a fixed left sidebar (~220px) and a scrollable main content area.
-
-**Left sidebar** (fixed, full height, dark background `#1a1a2e`, white text):
-- "Aida" logo text at top (bold, `#4f9cf9`)
-- Business name (14px, white)
-- Navigation links (14px, `#a0aec0`, hover `#fff`) that anchor-scroll to each section:
-  - Business Profile
-  - Competitive Research (only if competitors.md exists)
-  - Marketing Strategy (only if marketing_strategy.md exists)
-  - Campaigns (with sub-links per version: "Campaign v1", "Campaign v2"…)
-
-**Main content area** (margin-left matching sidebar, padding 32px, background `#f7f8fc`):
-
-Each section is a white card (`background #fff`, `border-radius 10px`, `box-shadow 0 1px 4px rgba(0,0,0,.08)`, `padding 28px`, `margin-bottom 24px`).
-
----
-
-**Section: Business Profile** (id="business-profile")
-- Section heading "Business Profile" (h2, `#1a1a2e`)
-- Render the full content of `business_profile.md` as HTML inside the card — convert markdown syntax to proper HTML tags (headings → `<h3>`/`<h4>`, `**bold**` → `<strong>`, bullet lists → `<ul><li>`, tables → `<table>` with basic styling, paragraph breaks → `<p>`)
-
-**Section: Competitive Research** (id="competitive-research") — only if competitors.md exists
-- Render the full content of `competitors.md` as HTML
-
-**Section: Marketing Strategy** (id="marketing-strategy") — only if marketing_strategy.md exists
-- Render the full content of `marketing_strategy.md` as HTML
-
----
-
-**Section: Campaigns** (id="campaigns")
-- Section heading "Campaigns"
-- One subsection per campaign version, **newest first**. Each version has its own anchor id (e.g. `id="campaign-v2"`).
-
-For each version:
-- Version header bar: "Campaign [v]" badge (white text on `#4f9cf9` background, border-radius 6px) + date from the results file's "Last updated" line
-- **Ad Previews subsection heading** "Ad Previews" (h3)
-  - For each HTML asset that exists in `campaigns/[v]/assets/`, embed it in an `<iframe>`:
-    - `src="campaigns/[v]/assets/[file].html"`
-    - `width="100%"`, appropriate fixed height: google-ads.html → 520px, social-media-*.html → 620px, gbp-listing.html → 580px
-    - `style="border:1px solid #e0e0e0; border-radius:8px; display:block; margin-bottom:16px;"`
-    - Label above each iframe: "Google Ad", "Facebook Post", "Instagram Post", "LinkedIn Post", "GBP Listing" — bold, 14px, `#444`
-- **Results subsection heading** "Campaign Results" (h3)
-  - Render the content of each results .md file that exists as HTML inside a light-grey inner box (`background #f7f8fc`, `border-radius 8px`, `padding 16px`, `margin-bottom 12px`), with a small heading showing the file name ("Google Business Profile", "Social Media", "Google Ads")
-
----
-
-**Markdown → HTML conversion rules** to apply when rendering all .md files:
-- `# text` → `<h2>`, `## text` → `<h3>`, `### text` → `<h4>`
-- `**text**` → `<strong>`
-- `_text_` or `*text*` → `<em>`
-- `- item` or `* item` → `<ul><li>`
-- `1. item` → `<ol><li>`
-- ` ```code``` ` blocks → `<pre style="background:#f4f4f4;padding:12px;border-radius:6px;overflow-x:auto;font-size:13px;">`
-- `| col | col |` tables → `<table style="border-collapse:collapse;width:100%">` with `<th>` for header row, `<td>` cells, `border:1px solid #e0e0e0`, `padding:8px 12px`
-- Blank lines between text → `<p>` paragraph breaks
-- Horizontal rules (`---`) → `<hr style="border:none;border-top:1px solid #e8e8e8;margin:16px 0;">`
+Wait for it to complete.
 
 ### Step 4 — Present results
 
@@ -409,7 +341,7 @@ Invoke the **`campaign-simulator`** skill using the `Agent` tool. Pass it:
 
 Wait for it to complete, then read the three results files and deliver the performance briefing as real data — not a simulation summary. Use language like "your profile has already had X views", "Peter's campaign got its first clicks", "Mia's post is picking up engagement".
 
-Then regenerate `plugins/aida/clients/[slug]/index.html` (same spec as Step 3, now including the new results).
+Then invoke **`overview-generator`** again to regenerate `index.html` with the new results included. Pass it the client path prefix: `plugins/aida/clients/[slug]/`
 
 ### Step 6 — Propose next campaign iteration
 
