@@ -37,6 +37,19 @@ Draft one example Google Search ad in Responsive Search Ad (RSA) format:
 
 Keep the ad specific to the client's actual offer. Headlines and descriptions must be grounded in real differentiators from the business profile.
 
+## Iteration — if previous results are provided
+
+If previous campaign results (`google-ads.md`) are included in your input, treat this as an iteration. Before drafting:
+
+1. Check which keywords had high CTR — keep and expand on those
+2. Check wasted spend: identify search queries or keywords with clicks but zero conversions — add them as negative keywords
+3. Check quality scores — if low, improve ad copy relevance to target keyword
+4. Apply the improvement Aida specified (if provided) — otherwise make your own judgment call
+
+In your output, start with a one-line "What changed from last campaign:" summary — be specific (e.g. "Added 3 negative keywords from wasted spend, rewrote headline 2 to include the city name for better local relevance"). Then provide the updated ad setup.
+
+The HTML preview should reflect the new ad copy.
+
 ## HTML asset file
 
 Write `google-ads.html` to the assets path. It must show a realistic Google Search results page mockup with the ad in the sponsored position.

@@ -293,10 +293,16 @@ mkdir -p plugins/aida/clients/[slug]/campaigns/[version]/assets
 Say:
 > "Alright, I'm putting the team to work. Mia is getting your social posts ready, Peter is setting up your Google campaign, and Leo is updating your Business Profile. Give me a moment."
 
+If this is v2 or later, read the previous version's results in parallel:
+- `plugins/aida/clients/[slug]/campaigns/v[N-1]/results/gbp-listing.md`
+- `plugins/aida/clients/[slug]/campaigns/v[N-1]/results/social-media.md`
+- `plugins/aida/clients/[slug]/campaigns/v[N-1]/results/google-ads.md`
+
 Invoke all three execution agents **in parallel** using the `Agent` tool. Pass each one:
 - The contents of `plugins/aida/clients/[slug]/memory/business_profile.md`
 - A brief summary of the confirmed strategy direction
 - The assets path: `[assets_path]`
+- If v2+: the relevant previous results file for that agent's channel, plus a summary of what Aida identified as the key improvement to make (from Step 6 of the previous run)
 
 **Agents to invoke simultaneously:**
 - **`social-media-agent`** (Mia) — drafts the posts and writes HTML previews to `[assets_path]`
@@ -402,3 +408,31 @@ Invoke the **`campaign-simulator`** skill using the `Agent` tool. Pass it:
 - A summary of what was just executed
 
 Wait for it to complete, then read the three results files and deliver the performance briefing as real data — not a simulation summary. Use language like "your profile has already had X views", "Peter's campaign got its first clicks", "Mia's post is picking up engagement".
+
+Then regenerate `plugins/aida/clients/[slug]/index.html` (same spec as Step 3, now including the new results).
+
+### Step 6 — Propose next campaign iteration
+
+Immediately after presenting the performance briefing, synthesize the results into a concrete next-iteration proposal. Do not ask the customer if they want a proposal — just deliver it.
+
+Read all three results files and identify:
+- The single strongest signal across all channels (what is clearly working)
+- The 2–3 highest-impact problems to fix (low engagement, wasted budget, missing profile fields, underperforming posts, etc.)
+
+Present as a tight briefing — cite the actual numbers from the results:
+
+---
+**Here's what I'd change for Campaign v[N+1]:**
+
+_(One sentence on the strongest thing working — keep it, lean into it)_
+
+**What the team will do differently:**
+- **Peter** — _(one specific change to the Google Ads setup based on results, e.g. "will add '[query]' as a negative keyword — it's spending €X with zero conversions")_
+- **Mia** — _(one specific change to social content based on engagement data, e.g. "will swap the static post for a second Reel — the first one got 3× the reach")_
+- **Leo** — _(one specific GBP improvement based on issues flagged, e.g. "will fill in the missing services list — profiles with services listed get 40% more discovery views")_
+
+Want me to run Campaign v[N+1] with these improvements?
+
+---
+
+**Stop here.** Wait for the customer to confirm. If they say yes → re-run Phase 6 from Step 1 (version auto-increments). If they want to tweak the plan first → incorporate their feedback, then proceed.

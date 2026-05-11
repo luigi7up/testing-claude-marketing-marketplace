@@ -29,6 +29,18 @@ Draft one example post per relevant platform (pick the 1–2 most relevant for t
 
 Keep posts short, on-brand, and specific to the client's actual products/services. Do not use generic filler copy.
 
+## Iteration — if previous results are provided
+
+If previous campaign results (`social-media.md`) are included in your input, treat this as an iteration. Before drafting:
+
+1. Identify what worked: which post type had the highest reach and engagement rate
+2. Identify what underperformed: which post got the lowest engagement or reach
+3. Apply the improvement Aida specified (if provided) — otherwise make your own judgment call
+
+In your output, start with a one-line "What changed from last campaign:" summary — be specific (e.g. "Swapped static image for a Reel — previous Reel got 3× the reach of the image post"). Then draft the improved posts.
+
+The HTML previews you write should reflect the new content.
+
 ## HTML asset files
 
 For each platform post you draft, write a self-contained HTML preview file to the assets path. The file should show a realistic mockup of how the post looks on that platform.

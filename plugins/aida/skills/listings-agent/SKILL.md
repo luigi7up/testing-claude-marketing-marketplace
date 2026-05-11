@@ -44,6 +44,20 @@ Present a structured GBP update proposal:
 
 Flag any fields that could not be determined from the business profile with `⚠ needs verification`.
 
+## Iteration — if previous results are provided
+
+If previous campaign results (`gbp-listing.md`) are included in your input, treat this as an iteration. Before drafting:
+
+1. Check the profile completeness score — fill in the highest-priority missing or partial fields
+2. Check issues flagged (HIGH severity first) — address each one specifically
+3. Check the top search queries — if discovery searches are low, strengthen the business description and services list with those keywords
+4. Check review response rate — if 0%, draft a response template to include
+5. Apply the improvement Aida specified (if provided) — otherwise make your own judgment call
+
+In your output, start with a one-line "What changed from last campaign:" summary — be specific (e.g. "Added full services list and filled in missing hours — both were flagged as HIGH severity issues"). Then provide the updated GBP fields.
+
+The HTML preview should reflect the improved profile.
+
 ## HTML asset file
 
 Write `gbp-listing.html` to the assets path. It must show a realistic Google Business Profile knowledge panel as it appears on Google Search.
