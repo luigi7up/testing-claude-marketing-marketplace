@@ -298,17 +298,66 @@ If this is v2 or later, read the previous version's results in parallel:
 - `plugins/aida/clients/[slug]/campaigns/v[N-1]/results/social-media.md`
 - `plugins/aida/clients/[slug]/campaigns/v[N-1]/results/google-ads.md`
 
-Invoke all three execution agents **in parallel** using the `Agent` tool. Pass each one:
-- The contents of `plugins/aida/clients/[slug]/memory/business_profile.md`
-- A brief summary of the confirmed strategy direction
-- The assets path: `[assets_path]`
-- If v2+: the relevant previous results file for that agent's channel, plus a summary of what Aida identified as the key improvement to make (from Step 6 of the previous run)
+Invoke all four execution agents **in parallel** using the `Agent` tool, each with the prompt specified below.
 
-**Agents to invoke simultaneously:**
-- **`social-media-agent`** (Mia) — drafts the posts and writes HTML previews to `[assets_path]`
-- **`paid-agent`** (Peter) — creates the Google ad and writes `google-ads.html` to `[assets_path]`
-- **`listings-agent`** (Leo) — prepares the GBP update and writes `gbp-listing.html` to `[assets_path]`
-- **`web-agent`** (Emma) — queues any website changes and writes `website-update.html` to `[assets_path]`
+---
+
+**`social-media-agent`** (Mia) — prompt to pass:
+```
+Business profile:
+[full contents of business_profile.md]
+
+Strategy direction: [confirmed strategy summary]
+
+Assets path: [assets_path]
+[If v2+: Previous social media results:\n[contents of previous social-media.md]\nKey improvement to make: [improvement identified in Step 6]]
+
+Draft the social media posts for this campaign and write the HTML preview files to the assets path.
+```
+
+---
+
+**`paid-agent`** (Peter) — prompt to pass:
+```
+Business profile:
+[full contents of business_profile.md]
+
+Strategy direction: [confirmed strategy summary]
+
+Assets path: [assets_path]
+[If v2+: Previous Google Ads results:\n[contents of previous google-ads.md]\nKey improvement to make: [improvement identified in Step 6]]
+
+Set up the Google Ads campaign and write the HTML preview file to the assets path.
+```
+
+---
+
+**`listings-agent`** (Leo) — prompt to pass:
+```
+Business profile:
+[full contents of business_profile.md]
+
+Strategy direction: [confirmed strategy summary]
+
+Assets path: [assets_path]
+[If v2+: Previous GBP results:\n[contents of previous gbp-listing.md]\nKey improvement to make: [improvement identified in Step 6]]
+
+Prepare the Google Business Profile update and write the HTML preview file to the assets path.
+```
+
+---
+
+**`web-agent`** (Emma) — prompt to pass:
+```
+Business profile:
+[full contents of business_profile.md]
+
+Strategy direction: [confirmed strategy summary]
+
+Based on this business profile and strategy, summarise what website changes you would make — what you would add, update, or configure in the Aida Website Builder. Be specific (service names, prices, booking settings, content sections).
+
+Only document a summary of the changes you want to make, don't generate any html for the customer's website, only for the card summarizing the proposed changes.
+```
 
 ### Step 3 — Generate index.html
 
