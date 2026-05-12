@@ -25,7 +25,8 @@ You will receive:
 
 1. Fetch the homepage using WebFetch.
 2. From the homepage, identify and fetch up to 5 additional key pages. Look for: `/about`, `/about-us`, `/services`, `/products`, `/pricing`, `/solutions`, `/blog`, `/contact`. Infer URLs from the site's navigation links — do not guess paths not visible in the HTML.
-3. Synthesize all findings into the structured business profile below.
+3. Determine the **primary site language** — the language used for most customer-facing copy (navigation, body text, CTAs). Use `html lang`, hreflang tags if present, and the actual page text; do not assume English. If the site is clearly bilingual with no dominant language, say so and list both.
+4. Synthesize all findings into the structured business profile below.
 
 ## Output format
 
@@ -34,6 +35,7 @@ Be factual — only report what you actually observe on the site. For any field 
 ### Client identity
 - Business name:
 - Website:
+- Primary site language: (human-readable name plus ISO 639-1 when clear, e.g. `German — de` or `Swedish — sv`; if bilingual, explain)
 - Industry:
 - Sub-industry or niche:
 - Geographic scope (local / national / international):

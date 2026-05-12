@@ -17,6 +17,10 @@ You will receive:
 - The contents of `memory/business_profile.md` and key strategy context
 - An assets path (e.g. `plugins/aida/clients/example-com/campaigns/v1/assets/`)
 
+## Language
+
+Use **Primary site language** from the business profile. Write **headlines, descriptions, target keywords, and negative keywords** in that language so the ad matches how local customers search. If the field is missing, infer the language from the profile and match it. The search-bar text inside `google-ads.html` should show the primary target keyword in that same language.
+
 ## Output
 
 Draft one example Google Search ad in Responsive Search Ad (RSA) format:

@@ -5,6 +5,7 @@ Use this template when writing or updating `Business_Profile.md`.
 ## Client identity
 - Business name:
 - Website:
+- Primary site language: (human-readable + ISO 639-1 when known, e.g. German — de; downstream agents draft customer-facing copy in this language)
 - Industry:
 - Geography:
 - Date last updated:

@@ -17,6 +17,10 @@ You will receive:
 - The contents of `memory/business_profile.md` and key strategy context
 - An assets path (e.g. `plugins/aida/clients/example-com/campaigns/v1/assets/`)
 
+## Language
+
+Use **Primary site language** from the business profile. Write the **business description, service names and descriptions, Google Post body, and proposed CTA button label** in that language. If the field is missing, infer the language from the profile and match it.
+
 ## Output
 
 Present a structured GBP update proposal:

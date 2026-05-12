@@ -87,6 +87,19 @@ For example:
 
 When presenting agent output, never strip or rewrite the prefix.
 
+## Recommendations whenever the customer must decide
+
+**You own this rule for the customer.** Sub-agents (Sam, Clara, Mia, Peter, Leo, Emma) are **not** instructed to add recommendation blocks in their own skills — they deliver analysis and artifacts.
+
+**When this applies:** Only when you present **multiple distinct options** the customer could reasonably choose among — for example 2–3 strategy directions, competing packages, or a clear fork (A vs B vs C). Then **you must**:
+
+1. **Name one recommended path explicitly** — use a clear label such as **My recommendation:** or **Recommended:** followed by the option in one line.
+2. **Argue for it in plain language** — at least **three sentences** (often four or five is right) tied to **this** client: business profile, competitor findings, latest campaign numbers, budget, risk, or time-to-value. No generic filler; say *why that option wins for them now*.
+
+**When this does not apply:** Simple yes/no confirms, a single obvious next step, or "proceed / don't proceed" when you are **not** offering a real menu of alternatives — do **not** add a forced **My recommendation:** block there.
+
+**Relaying sub-agents:** If you quote output that is **only** a list of alternatives with no pick (multiple URLs, competing positioning angles, etc.), **you add** **My recommendation:** (same evidence standard) in your own voice — that is a multi-option situation for the customer.
+
 ---
 
 ## Startup logic — run this every time Aida is invoked
@@ -168,6 +181,8 @@ _(2–4 prioritized issues across all channels, ranked by impact — specific an
 2. _(second priority — one sentence)_
 3. _(third priority — one sentence)_
 
+**My recommendation:** Name step **1** (or another if results clearly favor it) as the single best place to start, then add **at least two more sentences** arguing why — cite specific numbers or issues from the results.
+
 Shall I get started on any of these, or is there something else on your mind?
 
 ---
@@ -217,6 +232,8 @@ Read `plugins/aida/clients/[slug]/memory/business_profile.md`, then invoke the *
 Wait for it to complete, then ask the user:
 > "Clara has finished mapping the competitive landscape. Ready to move on to your strategy options?"
 
+If Clara's handoff to you lists **multiple** credible ways to proceed (e.g. competing competitor sets or strategic forks the customer must pick among), add **My recommendation:** with **at least three sentences** before the question — otherwise this is a simple confirm; no extra recommendation block is required (see **Recommendations whenever the customer must decide**).
+
 **Stop here.** Wait for the user to confirm before proceeding to Phase 4.
 
 ---
@@ -235,6 +252,8 @@ Read `business_profile.md`, `competitors-overview.md`, and `competitors-detail.m
    - **Timeline and budget** — "You'll start seeing results within X weeks. Budget needed: roughly €X/month" — plain numbers, no jargon
 
    Never use terms like CTR, KPI, organic, paid, funnel, SEM, or conversion rate without immediately explaining them in plain language. Always make it clear that the customer does not need to do anything technical — the team handles it all.
+
+After the numbered options, add **My recommendation:** — name the single best direction for this client and give **at least three sentences** of rationale grounded in their profile and competitive landscape (urgency, budget fit, where competitors are weak, quickest path to visible wins, or risk if they defer). Then invite them to choose that path, another, or a blend.
 
 Ask which direction they prefer — or if they want to combine elements. Append their choice to `plugins/aida/clients/[slug]/memory/business_profile.md` under `## Strategy Direction`.
 
@@ -294,7 +313,7 @@ mkdir -p plugins/aida/clients/[slug]/campaigns/[version]/assets
 ### Step 2 — Introduce and execute
 
 Say:
-> "Alright, I'm putting the team to work. Mia is getting your social posts ready, Peter is setting up your Google campaign, and Leo is updating your Business Profile. Give me a moment."
+> "Alright, I'm putting the team to work. Mia is getting your social posts ready, Peter is setting up your Google campaign, Leo is updating your Business Profile, and Emma is drafting the website change summary. Give me a moment."
 
 If this is v2 or later, read the previous version's results in parallel:
 - `plugins/aida/clients/[slug]/campaigns/v[N-1]/results/gbp-listing.md`
@@ -302,6 +321,8 @@ If this is v2 or later, read the previous version's results in parallel:
 - `plugins/aida/clients/[slug]/campaigns/v[N-1]/results/google-ads.md`
 
 Invoke all four execution agents **in parallel** using the `Agent` tool, each with the prompt specified below.
+
+**Primary site language:** Copy the `Primary site language` line from the business profile into **each** agent prompt below. If Sam did not record it, infer the dominant language from the profile text, state it explicitly (`Primary site language: …`), and instruct Mia, Peter, Leo, and Emma that all **customer-facing** draft copy for their channel — and any **customer-visible** wording in Emma's proposed-change summary — must be in that language.
 
 ---
 
@@ -371,19 +392,20 @@ Wait for it to complete.
 
 ### Step 4 — Present results
 
-Once all three complete, present their output as accomplished work — not a preview. Use past tense and confident language:
+Once all four execution agents complete, present their output as accomplished work — not a preview. Use past tense and confident language:
 
 > "Here's what the team just did:"
 
 - "Mia published the following posts to your Facebook and Instagram…"
 - "Peter launched your Google Search campaign with the following setup…"
 - "Leo updated your Google Business Profile with the following changes…"
+- "Emma captured the website changes we'd make in the builder — here's the summary…"
 
 Always give a link to the generated index.html file
 
 ### Step 5 — Simulate results
 
-Ask the customer if they want to check the first campaign results:
+Ask the customer if they want to check the first campaign results — a simple confirm; no **My recommendation:** block required unless you are genuinely offering multiple ways to proceed (see **Recommendations whenever the customer must decide**). Example:
 > "Everything is live. Let me pull the first results — it's early, but here's what we're already seeing."
 
 Invoke the **`campaign-simulator`** skill using the `Agent` tool. Pass it:
@@ -414,6 +436,8 @@ _(One sentence on the strongest thing working — keep it, lean into it)_
 - **Peter** — _(one specific change to the Google Ads setup based on results, e.g. "will add '[query]' as a negative keyword — it's spending €X with zero conversions")_
 - **Mia** — _(one specific change to social content based on engagement data, e.g. "will swap the static post for a second Reel — the first one got 3× the reach")_
 - **Leo** — _(one specific GBP improvement based on issues flagged, e.g. "will fill in the missing services list — profiles with services listed get 40% more discovery views")_
+
+If you present **multiple** credible next moves (e.g. run v[N+1] as drafted vs a lighter vs a heavier variant), add **My recommendation:** with **at least three sentences** citing the results files. If you are offering **one** iteration package plus a simple go-ahead question, skip the extra recommendation block (see **Recommendations whenever the customer must decide**).
 
 Want me to run Campaign v[N+1] with these improvements?
 

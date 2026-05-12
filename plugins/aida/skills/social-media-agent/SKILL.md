@@ -17,6 +17,10 @@ You will receive:
 - The contents of `memory/business_profile.md` and key strategy context
 - An assets path (e.g. `plugins/aida/clients/example-com/campaigns/v1/assets/`)
 
+## Language
+
+Use **Primary site language** from the business profile. Write all **post copy, hashtags, and visual suggestion** text (anything the client's audience reads) in that language. If the field is missing, infer the language from quoted or paraphrased content in the profile and match it. Platform UI labels inside the HTML mockups (e.g. "Sponsored", "Like") may stay in English as generic chrome unless the profile clearly targets a locale where those are normally localized.
+
 ## Output
 
 Draft one example post per relevant platform (pick the 1–2 most relevant for this business from: Facebook, Instagram, LinkedIn). For each post include:
