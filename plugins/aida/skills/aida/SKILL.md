@@ -50,7 +50,8 @@ plugins/aida/clients/
     ├── index.html                     ← campaign overview page (written by Aida after each run)
     ├── memory/
     │   ├── business_profile.md        ← written by site-agent
-    │   ├── competitors.md             ← written by competitor-agent
+    │   ├── competitors-overview.md    ← written by competitor-agent (summary table)
+    │   ├── competitors-detail.md      ← written by competitor-agent (full analysis)
     │   └── marketing_strategy.md      ← final deliverable
     └── campaigns/
         └── v[N]/                      ← one folder per campaign iteration (v1, v2, v3…)
@@ -142,7 +143,8 @@ Update `plugins/aida/clients/[slug]/meta.md` with today's date as "Last active".
 
 Read ALL of the following in parallel:
 - `plugins/aida/clients/[slug]/memory/business_profile.md`
-- `plugins/aida/clients/[slug]/memory/competitors.md` (if it exists)
+- `plugins/aida/clients/[slug]/memory/competitors-overview.md` (if it exists)
+- `plugins/aida/clients/[slug]/memory/competitors-detail.md` (if it exists)
 - Latest campaign results: run `ls plugins/aida/clients/[slug]/campaigns/ 2>/dev/null | sort -V | tail -1` to find the highest version (e.g. `v3`), then read in parallel:
   - `plugins/aida/clients/[slug]/campaigns/[latest]/results/gbp-listing.md` (if it exists)
   - `plugins/aida/clients/[slug]/campaigns/[latest]/results/social-media.md` (if it exists)
@@ -206,11 +208,11 @@ Proceed to Phase 3.
 
 Tell the customer: _"Now I'll have Clara, my Competitive Agent, take a look at who else is out there competing for the same customers — so we know exactly where the opportunities are."_
 
-Check whether `plugins/aida/clients/[slug]/memory/competitors.md` exists. If yes, skip unless the user asked to re-run.
+Check whether `plugins/aida/clients/[slug]/memory/competitors-overview.md` exists. If yes, skip unless the user asked to re-run.
 
 Read `plugins/aida/clients/[slug]/memory/business_profile.md`, then invoke the **`competitor-agent`** skill using the `Agent` tool. Pass it:
 - The full contents of `plugins/aida/clients/[slug]/memory/business_profile.md`
-- The target path: `plugins/aida/clients/[slug]/memory/competitors.md`
+- The target directory: `plugins/aida/clients/[slug]/memory/`
 
 Wait for it to complete, then ask the user:
 > "Clara has finished mapping the competitive landscape. Ready to move on to your strategy options?"
@@ -221,7 +223,7 @@ Wait for it to complete, then ask the user:
 
 ## Phase 4 — Strategy direction (new customers only)
 
-Read both memory files and present the customer with:
+Read `business_profile.md`, `competitors-overview.md`, and `competitors-detail.md` from the memory directory, then present the customer with:
 
 1. **Business summary** (3–4 sentences)
 2. **Competitive landscape** (2–3 sentences)
@@ -258,7 +260,8 @@ Write the completed plan to `plugins/aida/clients/[slug]/memory/marketing_strate
 
 Provide links:
 - `plugins/aida/clients/[slug]/memory/business_profile.md`
-- `plugins/aida/clients/[slug]/memory/competitors.md`
+- `plugins/aida/clients/[slug]/memory/competitors-overview.md`
+- `plugins/aida/clients/[slug]/memory/competitors-detail.md`
 - `plugins/aida/clients/[slug]/memory/marketing_strategy.md`
 
 ---
